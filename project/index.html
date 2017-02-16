@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置问卷：</title>
+	<link rel="stylesheet" type="text/css" href="styleSheet/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="styleSheet/forIndex.css">
+</head>
+<body>
+	<div class="content">
+		<form name='myForm' id="form" method="post">
+			<fieldset class="fieldset" id="fieldset">
+				<legend ><h3>请设置问卷:</h3></legend>
+				<div class="medium-4 float-center" >
+					<label for="id">问卷编号:
+						<input id="id" name="id" type="number" required>
+					</label>
+					<label for="name">问卷名:
+						<input id="name" name="name" type="text" required>
+					</label>
+					<label for="question">题目:
+						<input id="question" name="question" placeholder="请设置第1题" type="text" required>
+					</label>
+				</div>
+				
+				<div class="small-5 float-center" id="option" >
+					
+					<label for="A">A:
+						<input id="A" type="text" name="A" required>
+					</label>
+
+					<label for="B">B:
+						<input id="B" type="text" name="B" required>
+					</label>
+
+					<label for="C">C:
+						<input id="C" type="text" name="C" required>
+					</label>
+
+					<label for="D">D:
+						<input id="D" type="text" name="D" required>
+					</label>
+
+				</div>
+			</fieldset>
+			<div>
+				
+				<input  class="button float-center disabled " id="submit" value="submit" >
+				
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

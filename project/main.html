@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="styleSheet/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="styleSheet/forMain.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="header">
+		
+		<ul class="menu align-left">
+		  <li ng-repeat="x in selData"><a ng-click="getTable(x)"><i class="fi-list"></i><span>调查表{{x.charAt(5)}}</span></a></li>
+		</ul>
+	</div>
+	<div class="content">
+		<form  method="post" name="myForm" class="float-center" >
+			<fieldset>
+				<legend class="float-center"><h3>{{myData[0]["tName"]}}</h3></legend>
+
+				<ul>
+					<li ng-repeat="x in myData" >
+						<span >{{x.id + '、' + x.question }}</span><br/>
+						<input type="radio" ng-model="myVar" value="A" required><label for="">A.{{x.A}}</label>&nbsp;
+						<input type="radio" ng-model="myVar" value="B"><label for="">B.{{x.B}}</label>&nbsp;
+						<input type="radio" ng-model="myVar" value="C"><label for="">C.{{x.C}}</label>&nbsp;
+						<input type="radio" ng-model="myVar" value="D"><label for="">D.{{x.D}}</label>&nbsp;
+						
+						<p style="display: none;">{{result[x.id]=myVar}}</p>
+					</li>
+					<hr/>
+				</ul>
+			</fieldset>
+			<input type="button" class="button float-center" ng-disabled="myForm.$invalid" ng-click="sub()" value="提交并查看结果">
+		</form>
+	</div>
+
+	<div class="showTable" ng-if="showResult">
+		<table class="hover stack">
+			<caption>统计结果(参与人数：{{count.length}})</caption>
+			<thead>
+				<tr>
+					<th>问题</th>
+					<th>选项</th>
+					<th>计数</th>
+					<th>计数</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="a in myData">
+				<tr>
+					<td>{{a.id +'、'+ a.question}}</td>
+					<td>{{'A、 '+a.A}}</td>
+					<td>{{arr[a.id-1].A}}</td>
+					<td><div style="width:{{arr[a.id-1].A*3}}px; height: 30px; background-color: #555;"></div></td>
+				</tr>
+				<tr>
+					<td>{{a.id +'、'+ a.question}}</td>
+					<td>{{'B、 '+a.B}}</td>
+					<td>{{arr[a.id-1].B}}</td>
+					<td><div style="width:{{arr[a.id-1].B*3}}px; height: 30px; background-color: #555;"></div></td>
+				</tr>
+				<tr>
+					<td>{{a.id +'、'+ a.question}}</td>
+					<td>{{'C、 '+a.C}}</td>
+					<td>{{arr[a.id-1].C}}</td>
+					<td><div style="width:{{arr[a.id-1].C*3}}px; height: 30px; background-color: #555;"></div></td>
+				</tr>
+				<tr>
+					<td>{{a.id +'、'+ a.question}}</td>
+					<td>{{'D、 '+a.D}}</td>
+					<td>{{arr[a.id-1].D}}</td>
+					<td><div style="width:{{arr[a.id-1].D*3}}px; height: 30px; background-color: #555;"></div></td>
+				</tr>
+				
+			</tbody>
+
+		</table>
+	</div>
+
+	<script type="text/javascript" src="js/control.js"></script>
+</body>
+</html>
